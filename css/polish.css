@@ -1,0 +1,21 @@
+/* Noderra motion polish layer — progressive enhancement */
+:root{--motion-ease:cubic-bezier(.2,.75,.25,1)}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{isolation:isolate}
+.noderra-scroll-progress{position:fixed;inset:0 auto auto 0;width:0;height:3px;z-index:9999;background:linear-gradient(90deg,var(--accent,#9b7bff),var(--accent-2,#65e5e3));box-shadow:0 0 14px color-mix(in srgb,var(--accent-2,#65e5e3) 45%,transparent);pointer-events:none;transform-origin:left}
+body.noderra-motion-ready .reveal{transition:opacity .72s var(--motion-ease),transform .72s var(--motion-ease),filter .72s var(--motion-ease);will-change:opacity,transform}
+body.noderra-motion-ready .reveal:not(.visible){opacity:0;transform:translate3d(0,24px,0);filter:blur(2px)}
+body.noderra-motion-ready .reveal.visible{opacity:1;transform:translate3d(0,0,0);filter:none}
+body.noderra-motion-ready .reveal[data-motion-delay="1"]{transition-delay:80ms}
+body.noderra-motion-ready .reveal[data-motion-delay="2"]{transition-delay:150ms}
+body.noderra-motion-ready .reveal[data-motion-delay="3"]{transition-delay:220ms}
+/* Crisp, restrained interaction polish */
+button,a,[role="button"]{-webkit-tap-highlight-color:transparent}
+a,button{transition:color .22s ease,background-color .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s var(--motion-ease)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent-2,#65e5e3);outline-offset:4px}
+.primary-btn,.button,.btn,.button-primary,.button-dark,.button-lime,.btn-primary,.btn-dark,.btn-light,.header-cta,.header-btn,.nav-book{position:relative;isolation:isolate;overflow:hidden}
+.primary-btn::after,.button::after,.btn::after,.button-primary::after,.button-dark::after,.button-lime::after,.btn-primary::after,.btn-dark::after,.btn-light::after,.header-cta::after,.header-btn::after,.nav-book::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.18) 48%,transparent 72%);transform:translateX(-130%);transition:transform .65s var(--motion-ease)}
+.primary-btn:hover::after,.button:hover::after,.btn:hover::after,.button-primary:hover::after,.button-dark:hover::after,.button-lime:hover::after,.btn-primary:hover::after,.btn-dark:hover::after,.btn-light:hover::after,.header-cta:hover::after,.header-btn:hover::after,.nav-book:hover::after{transform:translateX(130%)}
+.service-card,.program-card,.mentor-card,.doctor,.product-card,.property-card,.dish-card,.neighborhood,.editorial-main,.editorial-side,.feature-image,.method-image,.manifesto-image,.experience-image{transition:transform .35s var(--motion-ease),box-shadow .35s var(--motion-ease),border-color .35s ease}
+@media(hover:hover) and (pointer:fine){.service-card:hover,.program-card:hover,.mentor-card:hover,.doctor:hover,.product-card:hover,.property-card:hover,.dish-card:hover,.neighborhood:hover{transform:translateY(-5px)}.product-card img,.property-card img,.dish-card img,.doctor-photo img,.mentor-photo img,.program-image img,.feature-image img,.method-image img,.manifesto-image img,.experience-image img{transition:transform .7s var(--motion-ease)}.product-card:hover img,.property-card:hover img,.dish-card:hover img,.doctor:hover img,.mentor-card:hover img,.program-card:hover img{transform:scale(1.045)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}body.noderra-motion-ready .reveal:not(.visible){opacity:1;transform:none;filter:none}.noderra-scroll-progress{display:none}}
